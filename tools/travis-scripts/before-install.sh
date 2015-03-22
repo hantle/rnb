@@ -65,6 +65,12 @@ echo "Decompress android-ndk-r9d-linux-x86_64.tar.bz2..."
 tar xjf android-ndk-r9d-linux-x86_64.tar.bz2
 mv android-ndk-r9d android-ndk
 
+cd $HOME
+echo "Download android-sdk..."
+wget http://dl.google.com/android/android-sdk_r24.1.2-linux.tgz
+echo "Decompress android-sdk..."
+tar zxf android-sdk_r24.1.2-linux.tgz
+
 echo "Setup path"
 cd $HOME/cocos
 /usr/bin/env python ./setup.py
