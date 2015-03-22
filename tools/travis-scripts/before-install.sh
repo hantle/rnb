@@ -71,10 +71,3 @@ wget http://dl.google.com/android/android-sdk_r24.1.2-linux.tgz
 echo "Decompress android-sdk..."
 tar zxf android-sdk_r24.1.2-linux.tgz
 
-echo "Setup path"
-cd $HOME/cocos
-/usr/bin/env python ./setup.py
-
-source $HOME/.bashrc
-
-exit $?
