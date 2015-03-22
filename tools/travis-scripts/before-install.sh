@@ -65,10 +65,9 @@ echo "Decompress android-ndk-r9d-linux-x86_64.tar.bz2..."
 tar xjf android-ndk-r9d-linux-x86_64.tar.bz2
 mv android-ndk-r9d android-ndk
 
-export $PATH=$HOME/android-ndk:$PATH
-
 echo "Setup path"
 cd $HOME/cocos
 /usr/bin/env python ./setup.py
 
+. ~/.bashrc
 exit $?
