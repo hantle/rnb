@@ -53,6 +53,7 @@ echo "Download cocos2d-x-3.4..."
 wget  http://www.cocos2d-x.org/filedown/cocos2d-x-3.4.zip
 echo "Unzip cocos2d-x"
 unzip -o -q cocos2d-x-3.4.zip
+mv cocos2d-x-3.4 cocos
 
 echo "Install deps..."
 install_deps
