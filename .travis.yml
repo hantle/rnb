@@ -1,6 +1,8 @@
 before_install:
 - tools/travis-scripts/before-install.sh
 
+before_script: ./tools/travis-scripts/before-script.sh
+
 script: ./tools/travis-scripts/run-build.sh
 
 # whitelist

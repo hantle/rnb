@@ -76,4 +76,5 @@ cd $HOME/cocos
 /usr/bin/env python ./setup.py
 
 . ~/.bashrc
+
 exit $?
