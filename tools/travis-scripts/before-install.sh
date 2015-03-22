@@ -75,6 +75,6 @@ echo "Setup path"
 cd $HOME/cocos
 /usr/bin/env python ./setup.py
 
-. ~/.bashrc
+source $HOME/.bashrc
 
 exit $?
