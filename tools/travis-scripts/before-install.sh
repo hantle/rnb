@@ -1,12 +1,13 @@
 
 install_deps()
 {
-#install g++-4.9
+#install g++-4.9 & cmake-2.8.12
     sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
-    sudo apt-get update
+	sudo add-apt-repository --yes ppa:kalakris/cmake
+    sudo apt-get -qq update
 
 #try to remove glfw2
-    sudo apt-get remove libglfw2
+    sudo apt-get -qq remove libglfw2
 
     DEPENDS='libx11-dev'
     DEPENDS+=' libxmu-dev'
@@ -40,7 +41,7 @@ install_deps()
         TXTCOLOR_DEFAULT="\033[0;m"
         TXTCOLOR_GREEN="\033[0;32m"
         echo -e $TXTCOLOR_GREEN"Missing packages: $MISSING.\nYou may be asked for your password for package installation."$TXTCOLOR_DEFAULT
-        sudo apt-get --force-yes --yes install $MISSING
+        sudo apt-get --force-yes --yes -qq install $MISSING
     fi
 
 # install glfw
@@ -61,14 +62,11 @@ install_deps
 
 mkdir linux-build
 cd linux-build
+echo "Run cmake..."
 cmake ../..
 
 echo "Make cocos2d-x"
 make
-
-echo "Setup path"
-cd $HOME/cocos
-/usr/bin/env python ./setup.py
 
 cd $HOME
 echo "Download android-ndk-r9d-linux-x86_64.tar.bz2..."
@@ -77,3 +75,9 @@ echo "Decompress android-ndk-r9d-linux-x86_64.tar.bzx2..."
 tar xjf android-ndk-r9d-linux-x86_64.tar.bz2
 mv android-ndk-r9d android-ndk
 
+echo "Setup path"
+cd $HOME/cocos
+/usr/bin/env python ./setup.py
+
+
+exit $?
