@@ -14,9 +14,11 @@
 
 #define kMARKERFELT "fonts/Marker Felt.ttf"
 
-#define PERFECT 0.98
-#define GREAT   0.90
-#define GOOD    0.80 // 0.8 이상
-#define FAIL    0.80 // 0.8 이하
+#define kPERFECT 0.98
+#define kGREAT   0.90
+#define kGOOD    0.80 // 0.8 이상
+#define kFAIL    0.80 // 0.8 이하
+
+#define kTILESIZE 50.0
 
 #endif

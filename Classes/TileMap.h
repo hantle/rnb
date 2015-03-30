@@ -17,6 +17,8 @@ class TileMap
 public:
     TileMap(cocos2d::Layer *layer);
     void initTileMap(cocos2d::Layer *layer);
+    void loadMenu();
+    void loadMap(int level);
     
 private:
     cocos2d::Size visibleSize;

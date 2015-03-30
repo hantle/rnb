@@ -7,6 +7,9 @@
 //
 
 #include "MenuScene.h"
+#include "TileMap.h"
+#include "Player.h"
+#include "Define.h"
 
 USING_NS_CC;
 
@@ -79,6 +82,11 @@ bool MenuScene::init()
     
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+    
+    
+    auto player = new Player(this);
+    auto tileMap = new TileMap(this);
+    tileMap->loadMenu();
     
     return true;
 }
