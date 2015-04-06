@@ -16,7 +16,6 @@ TileMap::TileMap(Layer *layer)
     mainLayer = layer;
     visibleSize = Director::getInstance()->getVisibleSize();
     
-    
     /*
      0 0 0 0 0 0 0 0 0
      0 0 0 0 0 0 0 0 0
@@ -31,12 +30,12 @@ TileMap::TileMap(Layer *layer)
      */
     
     for (int i = 0; i < 10; i++) {
-        LayerColor *tile = LayerColor::create(Color4B::GRAY, kTILESIZE, kTILESIZE);
-        tile->setPosition(Point(50*i, 50*i));
-        LayerColor *tile2 = LayerColor::create(Color4B::BLUE, kTILESIZE, kTILESIZE);
-        tile2->setPosition(Point(50*i+50, 50*i));
-        mainLayer->addChild(tile);
-        mainLayer->addChild(tile2);
+        LayerColor *backgroundTile = LayerColor::create(Color4B::GRAY, kTILESIZE, kTILESIZE);
+        LayerColor *frontTile = LayerColor::create(Color4B::BLUE, kTILESIZE-4, kTILESIZE-4);
+        backgroundTile->setPosition(Point(50*i, 50*i));
+        frontTile->setPosition(Point(50*i+2, 50*i+2));
+        mainLayer->addChild(backgroundTile);
+        mainLayer->addChild(frontTile);
     }
 }
 
