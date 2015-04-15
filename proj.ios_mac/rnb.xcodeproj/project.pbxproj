@@ -68,6 +68,7 @@
 		FAFC24191AC63DC00019E2B6 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC24171AC63DC00019E2B6 /* MenuScene.cpp */; };
 		FAFC241C1AC63E280019E2B6 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC241A1AC63E280019E2B6 /* Player.cpp */; };
 		FAFC245A1AC64C900019E2B6 /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC24581AC64C900019E2B6 /* TileMap.cpp */; };
+		FAFF23451ADE6EE2009D0270 /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFF23431ADE6EE2009D0270 /* Singleton.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,8 @@
 		FAFC24551AC63F940019E2B6 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		FAFC24581AC64C900019E2B6 /* TileMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileMap.cpp; sourceTree = "<group>"; };
 		FAFC24591AC64C900019E2B6 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMap.h; sourceTree = "<group>"; };
+		FAFF23431ADE6EE2009D0270 /* Singleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Singleton.cpp; sourceTree = "<group>"; };
+		FAFF23441ADE6EE2009D0270 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +306,8 @@
 				FAFC24581AC64C900019E2B6 /* TileMap.cpp */,
 				FAFC24591AC64C900019E2B6 /* TileMap.h */,
 				FAFC24551AC63F940019E2B6 /* Define.h */,
+				FAFF23431ADE6EE2009D0270 /* Singleton.cpp */,
+				FAFF23441ADE6EE2009D0270 /* Singleton.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -507,6 +512,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FAFC24161AC63D110019E2B6 /* GameScene.cpp in Sources */,
 				FAFC245A1AC64C900019E2B6 /* TileMap.cpp in Sources */,
+				FAFF23451ADE6EE2009D0270 /* Singleton.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				FAFC24191AC63DC00019E2B6 /* MenuScene.cpp in Sources */,
 			);

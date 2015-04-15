@@ -17,7 +17,15 @@ class Player
 public:
     Player(cocos2d::Layer *layer);
     void initPlayer(cocos2d::Layer *layer);
+    void start();
+    void check();
+    void setPosition(cocos2d::Point location);
+    void moveBy(float duration, Point location);
+    void moveTo(float duration, cocos2d::Point location);
     
+    float speed;
+    bool isBlue;
+    cocos2d::Layer *playerNode;
 private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;

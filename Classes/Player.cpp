@@ -14,9 +14,57 @@ USING_NS_CC;
 Player::Player(Layer *layer)
 {
     visibleSize = Director::getInstance()->getVisibleSize();
+    mainLayer = layer;
+    speed = 0.25; // beat speed in seconds
+    
+    auto blueDot = DrawNode::create();
+    auto redDot = DrawNode::create();
+    auto line = DrawNode::create();
+    blueDot->drawDot(Point(-25, 0), 20, Color4F::RED);
+    redDot->drawDot(Point(25, 0), 20, Color4F::BLUE);
+    line->drawLine(Point(-25, 0), Point(25, 0), Color4F::MAGENTA);
+    
+    playerNode = Layer::create();
+    playerNode->setAnchorPoint(Point(0, 0));
+    playerNode->setPosition(Point(200, 100));
+    playerNode->addChild(blueDot);
+    playerNode->addChild(redDot);
+    playerNode->addChild(line);
+    
+    mainLayer->addChild(playerNode);
+    
+    isBlue = true;
 }
 
 void Player::initPlayer(Layer *layer)
 {
     
+}
+void Player::moveBy(float duration, Point location) {
+    auto moveByAction = MoveBy::create(duration, location);
+    playerNode->runAction(moveByAction);
+}
+void Player::moveTo(float duration, Point location) {
+    auto moveToAction = MoveTo::create(duration, location);
+    playerNode->runAction(moveToAction);
+}
+void Player::setPosition(Point location) {
+    playerNode->setPosition(location);
+}
+
+void Player::start()
+{
+    log("Player::start");
+    auto rotateAction = RotateBy::create(1, 90);
+    auto rotateForever = RepeatForever::create(rotateAction);
+    this->playerNode->runAction(rotateForever);
+}
+
+void Player::check()
+{
+    if (isBlue) {
+        isBlue = false;
+    } else {
+        isBlue = true;
+    }
 }

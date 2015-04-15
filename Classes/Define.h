@@ -9,6 +9,8 @@
 #ifndef rnb_Define_h
 #define rnb_Define_h
 
+#include "Singleton.h"
+
 #define kGAMESPEED 1
 #define kSCALE 3.0
 

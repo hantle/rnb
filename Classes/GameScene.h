@@ -10,6 +10,7 @@
 #define __rnb__GameScene__
 
 #include "cocos2d.h"
+#include "Player.h"
 
 class GameScene : public cocos2d::Layer
 {
@@ -21,7 +22,18 @@ public:
     virtual bool init();
     
     // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
+//    void menuCloseCallback(cocos2d::Ref* pSender);
+    
+    
+    
+    
+    Player *player;
+    
+    bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+    void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+    
+    
+    
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
