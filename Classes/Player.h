@@ -22,11 +22,12 @@ public:
     void setPosition(cocos2d::Point location);
     void moveBy(float duration, cocos2d::Point location);
     void moveTo(float duration, cocos2d::Point location);
+    void setSpeed(int bpm);
     
-    float speed;
     bool isBlue;
     cocos2d::Layer *playerNode;
 private:
+    float speed;
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
     cocos2d::Layer *mainLayer;
