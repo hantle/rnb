@@ -20,7 +20,7 @@ public:
     void start();
     void check();
     void setPosition(cocos2d::Point location);
-    void moveBy(float duration, Point location);
+    void moveBy(float duration, cocos2d::Point location);
     void moveTo(float duration, cocos2d::Point location);
     
     float speed;
