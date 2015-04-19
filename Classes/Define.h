@@ -11,6 +11,7 @@
 
 #include "Singleton.h"
 
+#define kRADIUS 50.0
 #define kGAMESPEED 1
 #define kSCALE 3.0
 

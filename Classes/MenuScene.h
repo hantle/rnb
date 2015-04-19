@@ -27,7 +27,7 @@ public:
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
     void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);
     
-    
+    void update(float dt);
     
     // implement the "static create()" method manually
     CREATE_FUNC(MenuScene);

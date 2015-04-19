@@ -74,7 +74,7 @@ bool GameScene::init()
 
 
 bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event){
-    player->check();
+//    player->check();
     
     //    background->removeBackground(this);
     return true;

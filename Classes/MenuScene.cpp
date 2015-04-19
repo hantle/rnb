@@ -41,16 +41,32 @@ bool MenuScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+    listener->onTouchBegan = CC_CALLBACK_2(MenuScene::onTouchBegan, this);
+    listener->onTouchMoved = CC_CALLBACK_2(MenuScene::onTouchMoved, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    
+    
     auto tileMap = new TileMap(this);
     tileMap->loadMenu();
+    
     
     player = new Player(this);
     player->start();
     
+    
+    schedule(schedule_selector(MenuScene::update), 0.5);
+    
     return true;
 }
-
+void MenuScene::update(float dt) {
+//    player->check();
+}
 bool MenuScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event){
+    log("MenuScene::touch");
     player->check();
     
     //    background->removeBackground(this);
