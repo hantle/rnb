@@ -15,7 +15,7 @@ Player::Player(Layer *layer)
 {
     visibleSize = Director::getInstance()->getVisibleSize();
     mainLayer = layer;
-    speed = 0.25; // beat speed in seconds
+    speed = 90; // angle per second
     
     // draw player
     blueDot = DrawNode::create();
@@ -59,7 +59,7 @@ void Player::setPosition(Point location) {
 
 void Player::start()
 {
-    auto rotateAction = RotateBy::create(speed, 90);
+    auto rotateAction = RotateBy::create(1, speed);
     auto rotateForever = RepeatForever::create(rotateAction);
     playerNode->runAction(rotateForever);
 //    playerNode->setRotation(90);
@@ -94,4 +94,11 @@ void Player::check()
         playerNode->setPosition(Point(playerNode->getPosition().x - x*kRADIUS, playerNode->getPosition().y - y*kRADIUS));
         this->start();
     }
+}
+
+void Player::setSpeed(int bpm)
+{
+    // 1beat = 180 degree
+    // angle / s = bpm / 60 * 180
+    speed = bpm * 3;
 }
