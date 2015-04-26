@@ -10,6 +10,7 @@
 #include "TileMap.h"
 #include "Player.h"
 #include "Define.h"
+#include "RhythmEngine.h"
 
 USING_NS_CC;
 
@@ -53,10 +54,12 @@ bool MenuScene::init()
     auto tileMap = new TileMap(this);
     tileMap->loadMenu();
     
+    auto rhythm = new RhythmEngine("music/sample.mp3");
     
     player = new Player(this);
     player->start();
-    
+    player->setSpeed(92);
+    rhythm->play(false);
     
     schedule(schedule_selector(MenuScene::update), 0.5);
     

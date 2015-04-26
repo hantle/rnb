@@ -120,6 +120,7 @@ set(GAME_SRC
   Classes/MenuScene.cpp
   Classes/Player.cpp
   Classes/TileMap.cpp
+  Classes/RhythmEngine.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -129,6 +130,7 @@ set(GAME_HEADERS
   Classes/MenuScene.h
   Classes/Player.h
   Classes/TileMap.h
+  Classes/RhythmEngine.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

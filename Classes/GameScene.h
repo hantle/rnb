@@ -11,9 +11,15 @@
 
 #include "cocos2d.h"
 #include "Player.h"
+#include "RhythmEngine.h"
 
 class GameScene : public cocos2d::Layer
 {
+private:
+    RhythmEngine *rhythm;
+
+    void start(); // start after 3,2,1 count
+
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();

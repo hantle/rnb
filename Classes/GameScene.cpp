@@ -39,14 +39,18 @@ bool GameScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
-    
     auto tileMap = new TileMap(this);
     tileMap->loadMap(0);
     
+    rhythm = new RhythmEngine("/music/sample.mp3");
+    rhythm->preLoad();
+
     player = new Player(this);
-    player->start();
-    
-    
+    player->setSpeed(92);
+    // immediately start for testing
+    // we need to make 3, 2, 1, count before starting
+
+    start();
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
@@ -57,6 +61,11 @@ bool GameScene::init()
     return true;
 }
 
+void GameScene::start()
+{
+    player->start();
+    rhythm->play(false);
+}
 
 //void GameScene::menuCloseCallback(Ref* pSender)
 //{
