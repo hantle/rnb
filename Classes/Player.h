@@ -23,6 +23,8 @@ public:
     void moveBy(float duration, cocos2d::Point location);
     void moveTo(float duration, cocos2d::Point location);
     void setSpeed(int bpm);
+    void checkPoint();
+    void removeNode(cocos2d::Node *node);
     
     bool isBlue;
     float currentX;

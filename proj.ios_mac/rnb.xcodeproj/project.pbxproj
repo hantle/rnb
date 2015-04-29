@@ -64,6 +64,8 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		FA4A4C531AEE0605006D5DCF /* RhythmEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4A4C511AEE0605006D5DCF /* RhythmEngine.cpp */; };
+		FA4A4C551AEE0631006D5DCF /* music in Resources */ = {isa = PBXBuildFile; fileRef = FA4A4C541AEE0631006D5DCF /* music */; };
 		FAFC24161AC63D110019E2B6 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC24141AC63D110019E2B6 /* GameScene.cpp */; };
 		FAFC24191AC63DC00019E2B6 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC24171AC63DC00019E2B6 /* MenuScene.cpp */; };
 		FAFC241C1AC63E280019E2B6 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC241A1AC63E280019E2B6 /* Player.cpp */; };
@@ -157,6 +159,9 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		FA4A4C511AEE0605006D5DCF /* RhythmEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RhythmEngine.cpp; sourceTree = "<group>"; };
+		FA4A4C521AEE0605006D5DCF /* RhythmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhythmEngine.h; sourceTree = "<group>"; };
+		FA4A4C541AEE0631006D5DCF /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = music; sourceTree = "<group>"; };
 		FAFC24141AC63D110019E2B6 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		FAFC24151AC63D110019E2B6 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		FAFC24171AC63DC00019E2B6 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
@@ -282,6 +287,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA4A4C541AEE0631006D5DCF /* music */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
@@ -308,6 +314,8 @@
 				FAFC24551AC63F940019E2B6 /* Define.h */,
 				FAFF23431ADE6EE2009D0270 /* Singleton.cpp */,
 				FAFF23441ADE6EE2009D0270 /* Singleton.h */,
+				FA4A4C511AEE0605006D5DCF /* RhythmEngine.cpp */,
+				FA4A4C521AEE0605006D5DCF /* RhythmEngine.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -466,6 +474,7 @@
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
+				FA4A4C551AEE0631006D5DCF /* music in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -511,6 +520,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FAFC24161AC63D110019E2B6 /* GameScene.cpp in Sources */,
+				FA4A4C531AEE0605006D5DCF /* RhythmEngine.cpp in Sources */,
 				FAFC245A1AC64C900019E2B6 /* TileMap.cpp in Sources */,
 				FAFF23451ADE6EE2009D0270 /* Singleton.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

@@ -64,16 +64,16 @@ void Player::start()
     playerNode->runAction(rotateForever);
 //    playerNode->setRotation(90);
 }
-
 void Player::check()
 {
     float x = cos(CC_DEGREES_TO_RADIANS(playerNode->getRotation()));
     float y = sin(CC_DEGREES_TO_RADIANS(-playerNode->getRotation()));
-//    log("position: %.f, %.f", playerNode->getPosition().x, playerNode->getPosition().y);
+    log("position: %.f, %.f", playerNode->getPosition().x, playerNode->getPosition().y);
 //    log("rotation : %.f", playerNode->getRotation());
 //    log("x, y = %f, %f", x, y);
 //    playerNode->setRotation(playerNode->getRotation() + 90);
     
+    Point target;
     playerNode->stopAllActions();
     if (isBlue) {
         isBlue = false;
@@ -81,19 +81,38 @@ void Player::check()
         blueDot->setPosition(Point(0, 0));
         redDot->setPosition(Point(-kRADIUS, 0));
         line->setPosition(Point(-kRADIUS, 0));
-        
-        playerNode->setPosition(Point(playerNode->getPosition().x + x*kRADIUS, playerNode->getPosition().y + y*kRADIUS));
-        this->start();
+        target = Point(playerNode->getPosition().x + x * kRADIUS, playerNode->getPosition().y + y * kRADIUS);
     } else {
         isBlue = true;
         
         blueDot->setPosition(Point(kRADIUS, 0));
         redDot->setPosition(Point(0, 0));
         line->setPosition(Point(0, 0));
-        
-        playerNode->setPosition(Point(playerNode->getPosition().x - x*kRADIUS, playerNode->getPosition().y - y*kRADIUS));
-        this->start();
+        target = Point(playerNode->getPosition().x - x*kRADIUS, playerNode->getPosition().y - y*kRADIUS);
     }
+    
+    this->start();
+    
+    
+    // checking playerNode position to Closest map position
+    float mapX = 50.0;
+    float mapY = 50.0;
+    int remainderX = (int)target.x % (int)kRADIUS;
+    int remainderY = (int)target.y % (int)kRADIUS;
+    log("remainder : %d, %d", remainderX, remainderY);
+    float closeX = (int)(target.x/kRADIUS) * kRADIUS;
+    float closeY = (int)(target.y/kRADIUS) * kRADIUS;
+    closeX = closeX + (remainderX > 25 ? 50 : 0);
+    closeY = closeY + (remainderY > 25 ? 50 : 0);
+    
+    playerNode->setPosition(Point(closeX, closeY));
+    
+    const float dist = target.getDistance(Vec2(0, 0));
+    log("distance : %.f target : %.f, %.f", dist, closeX, closeY);
+    DrawNode *dot = DrawNode::create();
+    dot->drawDot(target, 2.0, Color4F::YELLOW);
+    mainLayer->addChild(dot);
+    this->checkPoint();
 }
 
 void Player::setSpeed(int bpm)
@@ -101,4 +120,26 @@ void Player::setSpeed(int bpm)
     // 1beat = 180 degree
     // angle / s = bpm / 60 * 180
     speed = bpm * 3;
+}
+
+void Player::checkPoint()
+{
+    const char* skillName_temp[] = {"FAILED", "BAD", "GOOD", "GREAT", "PERFECT"};
+    
+    auto lbPoint = Label::createWithTTF(skillName_temp[2], kMARKERFELT, 20.0);
+    lbPoint->setTextColor(Color4B::YELLOW);
+    lbPoint->setPosition(playerNode->getPosition());
+    
+    auto moveUp = MoveBy::create(1.0, Point(0, 50));
+    auto fadeOut = FadeOut::create(1.0);
+    auto moveAndRemove = Sequence::create(moveUp, CallFuncN::create(CC_CALLBACK_1(Player::removeNode, this)), NULL);
+    lbPoint->runAction(moveAndRemove);
+    lbPoint->runAction(fadeOut);
+    
+    mainLayer->addChild(lbPoint);
+}
+
+void Player::removeNode(Node *node)
+{
+    node->removeFromParent();
 }

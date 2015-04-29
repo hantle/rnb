@@ -57,20 +57,19 @@ bool MenuScene::init()
     auto rhythm = new RhythmEngine("music/sample.mp3");
     
     player = new Player(this);
-    player->start();
     player->setSpeed(92);
+    player->start();
     rhythm->play(false);
     
-    schedule(schedule_selector(MenuScene::update), 0.5);
+    schedule(schedule_selector(MenuScene::update), 90.0/276.0);
     
     return true;
 }
 void MenuScene::update(float dt) {
-//    player->check();
+    player->check();
 }
 bool MenuScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event){
-    log("MenuScene::touch");
-    player->check();
+//    player->check();
     
     //    background->removeBackground(this);
     return true;
