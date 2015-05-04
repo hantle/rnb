@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Define.h"
 #include "RhythmEngine.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -42,6 +43,10 @@ bool MenuScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    auto gameScene = MenuItemFont::create("Game Scene", this,
+            menu_selector(MenuScene::goToGameScene));
+    auto menu = Menu::create(gameScene, NULL);
+    this->addChild(menu);
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
@@ -49,25 +54,22 @@ bool MenuScene::init()
     listener->onTouchMoved = CC_CALLBACK_2(MenuScene::onTouchMoved, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
-    
-    
     auto tileMap = new TileMap(this);
     tileMap->loadMenu();
-    
-    auto rhythm = new RhythmEngine("music/sample.mp3");
     
     player = new Player(this);
     player->setSpeed(92);
     player->start();
-    rhythm->play(false);
     
     schedule(schedule_selector(MenuScene::update), 90.0/276.0);
     
     return true;
 }
+
 void MenuScene::update(float dt) {
     player->check();
 }
+
 bool MenuScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event){
 //    player->check();
     
@@ -77,4 +79,8 @@ bool MenuScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event
 
 void MenuScene::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event) {
     Point location = touch->getLocation();
+}
+
+void MenuScene::goToGameScene(Ref *pSender) {
+    Director::getInstance()->replaceScene(GameScene::createScene());
 }

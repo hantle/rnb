@@ -8,6 +8,7 @@
 
 #include "GameScene.h"
 #include "TileMap.h"
+#include "Define.h"
 
 USING_NS_CC;
 
@@ -42,15 +43,19 @@ bool GameScene::init()
     auto tileMap = new TileMap(this);
     tileMap->loadMap(0);
     
-    rhythm = new RhythmEngine("/music/sample.mp3");
+    // this code should be inside loadMap()
+    rhythm = new RhythmEngine("music/sample.mp3");
     rhythm->preLoad();
 
     player = new Player(this);
     player->setSpeed(92);
+    player->start();
+    //player->setSpeed(tileMap->getSpeed());
+
     // immediately start for testing
     // we need to make 3, 2, 1, count before starting
 
-    start();
+    schedule(schedule_selector(GameScene::countDown), 1.0, 3, 0.0);
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
@@ -63,8 +68,33 @@ bool GameScene::init()
 
 void GameScene::start()
 {
-    player->start();
+    // stared = true;
     rhythm->play(false);
+}
+
+void GameScene::countDown(float dt) {
+    static int count = 3;
+
+    Label *countLabel;
+    if(count > 0 ) {
+        countLabel = Label::createWithTTF(CCString::createWithFormat("%d", count)->getCString(),
+                kMARKERFELT, 60.0);
+    } else {
+        countLabel = Label::createWithTTF("Go!!!", kMARKERFELT, 60.0);
+        start();
+    }
+    countLabel->setPosition(200, 200);
+    auto fadeOutAndRemove = Sequence::create(FadeOut::create(1.0), 
+                CallFuncN::create(CC_CALLBACK_1(GameScene::removeNode, this)), NULL);
+    countLabel->runAction(fadeOutAndRemove);
+    this->addChild(countLabel);
+
+    count--;
+}
+
+void GameScene::removeNode(Node *node) 
+{
+    node->removeFromParent();
 }
 
 //void GameScene::menuCloseCallback(Ref* pSender)

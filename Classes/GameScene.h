@@ -18,7 +18,10 @@ class GameScene : public cocos2d::Layer
 private:
     RhythmEngine *rhythm;
 
+    void countDown(float dt);
     void start(); // start after 3,2,1 count
+
+    void removeNode(Node *node);
 
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -29,8 +32,6 @@ public:
     
     // a selector callback
 //    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-    
     
     
     Player *player;
