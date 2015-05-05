@@ -44,16 +44,19 @@ bool GameScene::init()
     tileMap->loadMap(0);
     
     // this code should be inside loadMap()
-    rhythm = new RhythmEngine("music/sample.mp3");
-    rhythm->preLoad();
+    rhythm = new RhythmEngine();
+    rhythm->setBGM("music/sample.mp3");
+    rhythm->setEffect("music/knock.mp3");
 
     player = new Player(this);
     player->setSpeed(4.0);
+    player->start();
     //player->setSpeed(tileMap->getSpeed());
 
     // immediately start for testing
     // we need to make 3, 2, 1, count before starting
 
+    started = false;
     schedule(schedule_selector(GameScene::countDown), 1.0, 3, 0.0);
     
     auto listener = EventListenerTouchOneByOne::create();
@@ -67,9 +70,7 @@ bool GameScene::init()
 
 void GameScene::start()
 {
-    // stared = true;
-    rhythm->play(false);
-    player->start();
+    started = true;
 }
 
 void GameScene::countDown(float dt) {
@@ -112,10 +113,18 @@ void GameScene::removeNode(Node *node)
 //}
 
 
-bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event){
-//    player->check();
-    
-    //    background->removeBackground(this);
+bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+{
+    if(started)
+    {
+        //player->check();
+        rhythm->playEffect();
+
+        //if(!rhythm->isPlayingBGM()) {
+        if(rhythm->isPauseBGM()) {
+            rhythm->playBGM(false);
+        }
+    }
     return true;
 }
 

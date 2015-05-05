@@ -17,6 +17,7 @@ class GameScene : public cocos2d::Layer
 {
 private:
     RhythmEngine *rhythm;
+    bool started;
 
     void countDown(float dt);
     void start(); // start after 3,2,1 count
@@ -33,14 +34,10 @@ public:
     // a selector callback
 //    void menuCloseCallback(cocos2d::Ref* pSender);
     
-    
     Player *player;
     
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
     void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);
-    
-    
-    
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);

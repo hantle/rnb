@@ -7,23 +7,29 @@
 using namespace CocosDenshion;
 using namespace std;
 
+/*
+ * 
+ */
 class RhythmEngine {
     private:
-        char *filePath;
         SimpleAudioEngine *instance;
+        char *bgmPath;
+        char *effectPath;
+        bool pause;
 
     public:
-        // we need to use strategy or state pattern
-        // which is defined by ctor. because api to call to play background
-        // or effect is different.
-        // but now, using background music only for testing
-        RhythmEngine(const char *filePath);
-        //RhythmEngine(const char *filePath, int pitch);
-        //RhythmEngine(const char *filePath, int pitch, bool repeat);
+        RhythmEngine();
 
-        void preLoad();
-        void play(bool repeat);
-        void stop();
+        // effection sound for touch
+        void setEffect(const char *filePath);
+        void playEffect();
+
+        // main bgm functions
+        void setBGM(const char *filePath);
+        void playBGM(bool repeat);
+        void stopBGM();
+        bool isPlayingBGM();
+        bool isPauseBGM();
 };
 
 #endif // __RHYTHMENGINE_H__
