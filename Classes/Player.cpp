@@ -15,7 +15,7 @@ Player::Player(Layer *layer)
 {
     visibleSize = Director::getInstance()->getVisibleSize();
     mainLayer = layer;
-    speed = 90; // angle per second
+    speed = 0; // angle per second
     
     // draw player
     blueDot = DrawNode::create();
@@ -68,14 +68,23 @@ void Player::check()
 {
     float x = cos(CC_DEGREES_TO_RADIANS(playerNode->getRotation()));
     float y = sin(CC_DEGREES_TO_RADIANS(-playerNode->getRotation()));
-    log("position: %.f, %.f", playerNode->getPosition().x, playerNode->getPosition().y);
-//    log("rotation : %.f", playerNode->getRotation());
+//    log("position: %.f, %.f", playerNode->getPosition().x, playerNode->getPosition().y);
+    float targetRotation = playerNode->getRotation();
+    int rotationRemainder = (int)targetRotation % 90;
+    if (rotationRemainder > 45) {
+        targetRotation = ((int)(targetRotation / 90) + 1) * 90;
+    } else {
+        targetRotation = (int)(targetRotation / 90) * 90;
+    }
+//    log("rotation : %.f ... %d ->  %.f", playerNode->getRotation(), rotationRemainder, targetRotation);
+    playerNode->setRotation(targetRotation);
 //    log("x, y = %f, %f", x, y);
 //    playerNode->setRotation(playerNode->getRotation() + 90);
     
     Point target;
     playerNode->stopAllActions();
     if (isBlue) {
+        log("isBlue");
         isBlue = false;
         
         blueDot->setPosition(Point(0, 0));
@@ -83,6 +92,7 @@ void Player::check()
         line->setPosition(Point(-kRADIUS, 0));
         target = Point(playerNode->getPosition().x + x * kRADIUS, playerNode->getPosition().y + y * kRADIUS);
     } else {
+        log("isRed");
         isBlue = true;
         
         blueDot->setPosition(Point(kRADIUS, 0));
@@ -95,11 +105,10 @@ void Player::check()
     
     
     // checking playerNode position to Closest map position
-    float mapX = 50.0;
-    float mapY = 50.0;
+    // check up down left right
     int remainderX = (int)target.x % (int)kRADIUS;
     int remainderY = (int)target.y % (int)kRADIUS;
-    log("remainder : %d, %d", remainderX, remainderY);
+//    log("remainder : %d, %d", remainderX, remainderY);
     float closeX = (int)(target.x/kRADIUS) * kRADIUS;
     float closeY = (int)(target.y/kRADIUS) * kRADIUS;
     closeX = closeX + (remainderX > 25 ? 50 : 0);
@@ -108,18 +117,17 @@ void Player::check()
     playerNode->setPosition(Point(closeX, closeY));
     
     const float dist = target.getDistance(Vec2(0, 0));
-    log("distance : %.f target : %.f, %.f", dist, closeX, closeY);
+//    log("distance : %.f target : %.f, %.f", dist, closeX, closeY);
     DrawNode *dot = DrawNode::create();
     dot->drawDot(target, 2.0, Color4F::YELLOW);
     mainLayer->addChild(dot);
-    this->checkPoint();
 }
 
 void Player::setSpeed(int bpm)
 {
     // 1beat = 180 degree
     // angle / s = bpm / 60 * 180
-    speed = bpm * 3;
+    speed = 180.0 / bpm * 3;
 }
 
 void Player::checkPoint()

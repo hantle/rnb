@@ -48,8 +48,7 @@ bool GameScene::init()
     rhythm->preLoad();
 
     player = new Player(this);
-    player->setSpeed(92);
-    player->start();
+    player->setSpeed(4.0);
     //player->setSpeed(tileMap->getSpeed());
 
     // immediately start for testing
@@ -70,6 +69,7 @@ void GameScene::start()
 {
     // stared = true;
     rhythm->play(false);
+    player->start();
 }
 
 void GameScene::countDown(float dt) {

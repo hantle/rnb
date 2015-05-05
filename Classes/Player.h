@@ -25,6 +25,7 @@ public:
     void setSpeed(int bpm);
     void checkPoint();
     void removeNode(cocos2d::Node *node);
+    void update(float dt);
     
     bool isBlue;
     float currentX;

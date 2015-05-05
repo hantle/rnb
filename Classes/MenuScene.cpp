@@ -58,10 +58,10 @@ bool MenuScene::init()
     tileMap->loadMenu();
     
     player = new Player(this);
-    player->setSpeed(92);
+    player->setSpeed(6.0);
     player->start();
     
-    schedule(schedule_selector(MenuScene::update), 90.0/276.0);
+    schedule(schedule_selector(MenuScene::update), 1.0);
     
     return true;
 }
@@ -71,7 +71,7 @@ void MenuScene::update(float dt) {
 }
 
 bool MenuScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event){
-//    player->check();
+    player->checkPoint();
     
     //    background->removeBackground(this);
     return true;
