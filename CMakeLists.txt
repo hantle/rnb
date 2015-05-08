@@ -121,6 +121,7 @@ set(GAME_SRC
   Classes/Player.cpp
   Classes/TileMap.cpp
   Classes/RhythmEngine.cpp
+  Classes/Stage.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -131,6 +132,7 @@ set(GAME_HEADERS
   Classes/Player.h
   Classes/TileMap.h
   Classes/RhythmEngine.h
+  Classes/Stage.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

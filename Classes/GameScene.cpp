@@ -7,6 +7,7 @@
 //
 
 #include "GameScene.h"
+#include "Stage.h"
 #include "TileMap.h"
 #include "Define.h"
 
@@ -39,22 +40,14 @@ bool GameScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-        
-    auto tileMap = new TileMap(this);
-    tileMap->loadMap(0);
-    
-    // this code should be inside loadMap()
-    rhythm = new RhythmEngine();
-    rhythm->setBGM("music/sample.mp3");
-    rhythm->setEffect("music/knock.mp3");
 
+    Stage *stage = new Stage("", this);
+    rhythm = stage->getRhythmEngine();
+    
     player = new Player(this);
     player->setSpeed(4.0);
     player->start();
-    //player->setSpeed(tileMap->getSpeed());
-
-    // immediately start for testing
-    // we need to make 3, 2, 1, count before starting
+    //player->setSpeed(stage->getBPM());
 
     started = false;
     schedule(schedule_selector(GameScene::countDown), 1.0, 3, 0.0);

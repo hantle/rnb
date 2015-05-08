@@ -48,7 +48,7 @@ void TileMap::loadMenu()
 {
     
 }
+
 void TileMap::loadMap(int level)
 {
-    
 }
