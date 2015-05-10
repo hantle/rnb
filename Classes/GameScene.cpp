@@ -116,6 +116,8 @@ bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event
         //if(!rhythm->isPlayingBGM()) {
         if(rhythm->isPauseBGM()) {
             rhythm->playBGM(false);
+            // start world!!!
+            this->runAction(RepeatForever::create(MoveBy::create(1, Vec2(-10, 0))));
         }
     }
     return true;
