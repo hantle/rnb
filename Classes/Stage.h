@@ -11,6 +11,7 @@ class Stage {
         RhythmEngine *rhythm;
         TileMap *map;
 
+        void extractZip(const char *stageZip);
     public:
         Stage(const char *stageZip, cocos2d::Layer *layer);
         RhythmEngine *getRhythmEngine();
