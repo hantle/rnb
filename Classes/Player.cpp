@@ -130,21 +130,37 @@ void Player::setSpeed(int bpm)
     speed = 180.0 / bpm * 3;
 }
 
-void Player::checkPoint()
+void Player::checkPoint(Point target)
 {
-    const char* skillName_temp[] = {"FAILED", "BAD", "GOOD", "GREAT", "PERFECT"};
+    float dist;
+    if (isBlue) {
+        dist = target.getDistance(playerNode->getPosition());
+    } else {
+        dist = target.getDistance(playerNode->getPosition());
+    }
+    dist = floorf(dist/50.0);
     
-    auto lbPoint = Label::createWithTTF(skillName_temp[2], kMARKERFELT, 20.0);
-    lbPoint->setTextColor(Color4B::YELLOW);
-    lbPoint->setPosition(playerNode->getPosition());
-    
-    auto moveUp = MoveBy::create(1.0, Point(0, 50));
-    auto fadeOut = FadeOut::create(1.0);
-    auto moveAndRemove = Sequence::create(moveUp, CallFuncN::create(CC_CALLBACK_1(Player::removeNode, this)), NULL);
-    lbPoint->runAction(moveAndRemove);
-    lbPoint->runAction(fadeOut);
-    
-    mainLayer->addChild(lbPoint);
+    if (dist > 4) {
+        // out
+        auto lbPoint = Label::createWithTTF("OUT", kMARKERFELT, 50.0);
+        lbPoint->setTextColor(Color4B::RED);
+        lbPoint->setPosition(Point(visibleSize.width/2, visibleSize.height/2 - 40));
+        mainLayer->getParent()->addChild(lbPoint);
+    } else {
+        const char* skillName_temp[] = {"PERFECT", "GREAT", "GOOD", "BAD", "FAILED"};
+        
+        auto lbPoint = Label::createWithTTF(skillName_temp[(int)dist], kMARKERFELT, 50.0);
+        lbPoint->setTextColor(Color4B::YELLOW);
+        lbPoint->setPosition(Point(visibleSize.width/2, visibleSize.height/2 - 40));
+        
+        auto moveUp = MoveBy::create(1.0, Point(0, 50));
+        auto fadeOut = FadeOut::create(1.0);
+        auto moveAndRemove = Sequence::create(moveUp, CallFuncN::create(CC_CALLBACK_1(Player::removeNode, this)), NULL);
+        lbPoint->runAction(moveAndRemove);
+        lbPoint->runAction(fadeOut);
+        
+        mainLayer->getParent()->addChild(lbPoint);
+    }
 }
 
 void Player::removeNode(Node *node)

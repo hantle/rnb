@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "Player.h"
+#include "Stage.h"
 #include "RhythmEngine.h"
 
 class GameScene : public cocos2d::Layer
@@ -35,6 +36,9 @@ public:
 //    void menuCloseCallback(cocos2d::Ref* pSender);
     
     Player *player;
+    Stage *stage;
+    
+    void update(float dt);
     
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
     void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);

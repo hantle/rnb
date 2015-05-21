@@ -23,7 +23,7 @@ public:
     void moveBy(float duration, cocos2d::Point location);
     void moveTo(float duration, cocos2d::Point location);
     void setSpeed(int bpm);
-    void checkPoint();
+    void checkPoint(cocos2d::Point target);
     void removeNode(cocos2d::Node *node);
     void update(float dt);
     

@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class TileMap
+class TileMap : public cocos2d::Layer
 {
 public:
     TileMap(cocos2d::Layer *layer);

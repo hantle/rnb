@@ -34,9 +34,10 @@ TileMap::TileMap(Layer *layer)
         LayerColor *frontTile = LayerColor::create(Color4B::BLUE, kTILESIZE-4, kTILESIZE-4);
         backgroundTile->setPosition(Point(25 + 50*i, 25 + 50*i));
         frontTile->setPosition(Point(25 + 50*i+2, 25 + 50*i+2));
-        mainLayer->addChild(backgroundTile);
-        mainLayer->addChild(frontTile);
+        this->addChild(backgroundTile);
+        this->addChild(frontTile);
     }
+    mainLayer->addChild(this);
 }
 
 void TileMap::initTileMap(Layer *layer)

@@ -7,8 +7,6 @@
 //
 
 #include "GameScene.h"
-#include "Stage.h"
-#include "TileMap.h"
 #include "Define.h"
 
 USING_NS_CC;
@@ -41,11 +39,11 @@ bool GameScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    Stage *stage = new Stage("", this);
+    stage = new Stage("", this);
     rhythm = stage->getRhythmEngine();
     
-    player = new Player(this);
-    player->setSpeed(4.0);
+    player = new Player(stage->map);
+    player->setSpeed(3.0);
     player->start();
     //player->setSpeed(stage->getBPM());
 
@@ -61,9 +59,14 @@ bool GameScene::init()
     return true;
 }
 
+void GameScene::update(float dt) {
+    player->check();
+}
+
 void GameScene::start()
 {
     started = true;
+    schedule(schedule_selector(GameScene::update), 1.0, -1, 2.0);
 }
 
 void GameScene::countDown(float dt) {
@@ -117,8 +120,10 @@ bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event
         if(rhythm->isPauseBGM()) {
             rhythm->playBGM(false);
             // start world!!!
-            this->runAction(RepeatForever::create(MoveBy::create(1, Vec2(-10, 0))));
+            stage->map->runAction(RepeatForever::create(MoveBy::create(1, Vec2(-10, 0))));
         }
+        
+        player->checkPoint(Point(200, 100));
     }
     return true;
 }

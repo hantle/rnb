@@ -6,16 +6,16 @@
 #include "TileMap.h"
 
 class Stage {
-    private:
-        int bpm;
-        RhythmEngine *rhythm;
-        TileMap *map;
-
-        void extractZip(const char *stageZip);
-    public:
-        Stage(const char *stageZip, cocos2d::Layer *layer);
-        RhythmEngine *getRhythmEngine();
-        int getBPM();
+private:
+    int bpm;
+    RhythmEngine *rhythm;
+    
+    void extractZip(const char *stageZip);
+public:
+    TileMap *map;
+    Stage(const char *stageZip, cocos2d::Layer *layer);
+    RhythmEngine *getRhythmEngine();
+    int getBPM();
 };
 
 #endif // __Stage_h__

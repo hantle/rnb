@@ -66,6 +66,7 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		FA4A4C531AEE0605006D5DCF /* RhythmEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4A4C511AEE0605006D5DCF /* RhythmEngine.cpp */; };
 		FA4A4C551AEE0631006D5DCF /* music in Resources */ = {isa = PBXBuildFile; fileRef = FA4A4C541AEE0631006D5DCF /* music */; };
+		FAC8C4BD1AFF8F7300C46FC6 /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C4BB1AFF8F7300C46FC6 /* Stage.cpp */; };
 		FAFC24161AC63D110019E2B6 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC24141AC63D110019E2B6 /* GameScene.cpp */; };
 		FAFC24191AC63DC00019E2B6 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC24171AC63DC00019E2B6 /* MenuScene.cpp */; };
 		FAFC241C1AC63E280019E2B6 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFC241A1AC63E280019E2B6 /* Player.cpp */; };
@@ -162,6 +163,8 @@
 		FA4A4C511AEE0605006D5DCF /* RhythmEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RhythmEngine.cpp; sourceTree = "<group>"; };
 		FA4A4C521AEE0605006D5DCF /* RhythmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhythmEngine.h; sourceTree = "<group>"; };
 		FA4A4C541AEE0631006D5DCF /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = music; sourceTree = "<group>"; };
+		FAC8C4BB1AFF8F7300C46FC6 /* Stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
+		FAC8C4BC1AFF8F7300C46FC6 /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
 		FAFC24141AC63D110019E2B6 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		FAFC24151AC63D110019E2B6 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		FAFC24171AC63DC00019E2B6 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
@@ -303,19 +306,21 @@
 			children = (
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				FAFC24551AC63F940019E2B6 /* Define.h */,
 				FAFC24141AC63D110019E2B6 /* GameScene.cpp */,
 				FAFC24151AC63D110019E2B6 /* GameScene.h */,
 				FAFC24171AC63DC00019E2B6 /* MenuScene.cpp */,
 				FAFC24181AC63DC00019E2B6 /* MenuScene.h */,
 				FAFC241A1AC63E280019E2B6 /* Player.cpp */,
 				FAFC241B1AC63E280019E2B6 /* Player.h */,
-				FAFC24581AC64C900019E2B6 /* TileMap.cpp */,
-				FAFC24591AC64C900019E2B6 /* TileMap.h */,
-				FAFC24551AC63F940019E2B6 /* Define.h */,
-				FAFF23431ADE6EE2009D0270 /* Singleton.cpp */,
-				FAFF23441ADE6EE2009D0270 /* Singleton.h */,
 				FA4A4C511AEE0605006D5DCF /* RhythmEngine.cpp */,
 				FA4A4C521AEE0605006D5DCF /* RhythmEngine.h */,
+				FAFC24581AC64C900019E2B6 /* TileMap.cpp */,
+				FAFC24591AC64C900019E2B6 /* TileMap.h */,
+				FAFF23431ADE6EE2009D0270 /* Singleton.cpp */,
+				FAFF23441ADE6EE2009D0270 /* Singleton.h */,
+				FAC8C4BB1AFF8F7300C46FC6 /* Stage.cpp */,
+				FAC8C4BC1AFF8F7300C46FC6 /* Stage.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -518,6 +523,7 @@
 				FAFC241C1AC63E280019E2B6 /* Player.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				FAC8C4BD1AFF8F7300C46FC6 /* Stage.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				FAFC24161AC63D110019E2B6 /* GameScene.cpp in Sources */,
 				FA4A4C531AEE0605006D5DCF /* RhythmEngine.cpp in Sources */,
